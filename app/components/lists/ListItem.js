@@ -8,9 +8,8 @@ import {
 } from "react-native";
 import AppText from "../AppText";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-
 import colors from "../../config/colors";
-
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 function ListItem({
   title,
   subTitle,
@@ -29,6 +28,11 @@ function ListItem({
             <AppText style={styles.title}>{title}</AppText>
             {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
           </View>
+          <MaterialCommunityIcons
+            name="chevron-right"
+            size={25}
+            color={colors.medium}
+          />
         </View>
       </TouchableHighlight>
     </Swipeable>
