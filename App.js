@@ -1,6 +1,6 @@
 import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Switch, Text, TextInput, View } from "react-native";
 import {} from "@react-native-community/hooks";
 import AppText from "./app/components/AppText/AppText";
 import AppButton from "./app/components/AppButton";
@@ -20,6 +20,7 @@ import AppTextInput from "./app/components/AppTextInput";
 
 export default function App() {
   const [firstName, setFirstName] = useState("");
+  const [isNew, setIsNew] = useState(false);
   return (
     // <View
     //   style={{
@@ -46,7 +47,8 @@ export default function App() {
       {/* <AccountScreen /> */}
       {/* <ListingScreen /> */}
       <Screen>
-        <AppTextInput icon={"email"} />
+        {/* <AppTextInput icon={"email"} /> */}
+        <Switch value={isNew} onValueChange={setIsNew} />
       </Screen>
     </GestureHandlerRootView>
   );

@@ -1,6 +1,7 @@
 import { Platform, StyleSheet, Text, TextInput, View } from "react-native";
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import defaultStyles from "../config/styles";
 export default function AppTextInput({ icon, ...otherProps }) {
   return (
     <View style={styles.container}>
@@ -14,7 +15,7 @@ export default function AppTextInput({ icon, ...otherProps }) {
       )}
       <TextInput
         placeholder={"Username"}
-        style={styles.textInput}
+        style={defaultStyles.text}
         {...otherProps}
       />
     </View>
@@ -29,9 +30,5 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 15,
     marginVertical: 10,
-  },
-  textInput: {
-    fontSize: 18,
-    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
   },
 });
