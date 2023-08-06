@@ -17,10 +17,27 @@ import AccountScreen from "./app/screens/AccountScreen";
 import ListingScreen from "./app/screens/ListingScreen";
 import { useState } from "react";
 import AppTextInput from "./app/components/AppTextInput";
+import AppPicker from "./app/components/AppPicker";
+
+const categories = [
+  {
+    label: "Furniture",
+    value: 1,
+  },
+  {
+    label: "Clothing",
+    value: 2,
+  },
+  {
+    label: "Cameras",
+    value: 3,
+  },
+];
 
 export default function App() {
   const [firstName, setFirstName] = useState("");
   const [isNew, setIsNew] = useState(false);
+  const [category, setCategory] = useState(categories[0]);
   return (
     // <View
     //   style={{
@@ -48,7 +65,15 @@ export default function App() {
       {/* <ListingScreen /> */}
       <Screen>
         {/* <AppTextInput icon={"email"} /> */}
-        <Switch value={isNew} onValueChange={setIsNew} />
+        {/* <Switch value={isNew} onValueChange={setIsNew} /> */}
+        <AppPicker
+          items={categories}
+          icon="apps"
+          placeholder="Category"
+          selectedItem={category}
+          onSelecteItem={(item) => setCategory(item)}
+        />
+        <AppTextInput icon={"email"} placeholder={"Email"} />
       </Screen>
     </GestureHandlerRootView>
   );
