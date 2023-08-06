@@ -1,21 +1,26 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { FlatList, StyleSheet } from "react-native";
+
 import Screen from "../components/Screen";
 import Card from "../components/Card";
+import colors from "../config/colors";
+
 const listings = [
   {
     id: 1,
     title: "Red jacket for sale",
     price: 100,
-    image: require("../assets/chair.jpg"),
+    image: require("../assets/jacket.jpg"),
   },
   {
     id: 2,
     title: "Couch in great condition",
     price: 1000,
-    image: require("../assets/background.jpg"),
+    image: require("../assets/couch.jpg"),
   },
 ];
-export default function ListingScreen() {
+
+function ListingsScreen(props) {
   return (
     <Screen style={styles.screen}>
       <FlatList
@@ -36,6 +41,8 @@ export default function ListingScreen() {
 const styles = StyleSheet.create({
   screen: {
     padding: 20,
-    backgroundColor: "#f8f4f4",
+    backgroundColor: colors.light,
   },
 });
+
+export default ListingsScreen;
