@@ -1,10 +1,10 @@
 import { FlatList, StyleSheet, View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import ListItem from "../components/ListItem";
-import Constants from "expo-constants";
 import Screen from "../components/Screen";
 import ListItemSeparator from "../components/ListItemSeparator";
-console.log(Constants);
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+
 const messages = [
   {
     id: 1,
@@ -20,6 +20,8 @@ const messages = [
   },
 ];
 export default function MessagesScreen() {
+  const [refreshing, setRefreshing] = useState(false);
+  const [message, setMessage] = useState(messages[0]);
   return (
     <Screen>
       <FlatList
@@ -33,10 +35,25 @@ export default function MessagesScreen() {
             onPress={() => {
               console.log("Message selected", item);
             }}
+            renderRightActions={() => {
+              <View style={{ backgroundColor: "red", width: 70 }}></View>;
+            }}
           />
         )}
         ItemSeparatorComponent={() => {
           return <ListItemSeparator />;
+        }}
+        refreshing={refreshing}
+        onRefresh={() => {
+          // setRefreshing(true);
+          setMessage([
+            {
+              id: 2,
+              title: "T2",
+              description: "D2",
+              image: require("../assets/cropped_image_me.jpg"),
+            },
+          ]);
         }}
       />
     </Screen>

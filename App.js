@@ -1,7 +1,7 @@
+import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import {} from "@react-native-community/hooks";
-
 import AppText from "./app/components/AppText/AppText";
 import AppButton from "./app/components/AppButton";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
@@ -9,7 +9,17 @@ import Card from "./app/components/Card";
 import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import MessagesScreen from "./app/screens/MessagesScreen";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import Icon from "./app/components/Icon";
+import Screen from "./app/components/Screen";
+import ListItem from "./app/components/ListItem";
+import AccountScreen from "./app/screens/AccountScreen";
+import ListingScreen from "./app/screens/ListingScreen";
+import { useState } from "react";
+import AppTextInput from "./app/components/AppTextInput";
+
 export default function App() {
+  const [firstName, setFirstName] = useState("");
   return (
     // <View
     //   style={{
@@ -24,6 +34,20 @@ export default function App() {
     //     image={require("./app/assets/chair.jpg")}
     //   />
     // </View>
-    <MessagesScreen />
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      {/* <MessagesScreen /> */}
+      {/* <Screen>
+        <ListItem
+          title={"Title"}
+          // subTitle={"Subtitle"}
+          ImageComponent={<Icon name={"email"} />}
+        />
+      </Screen> */}
+      {/* <AccountScreen /> */}
+      {/* <ListingScreen /> */}
+      <Screen>
+        <AppTextInput icon={"email"} />
+      </Screen>
+    </GestureHandlerRootView>
   );
 }
