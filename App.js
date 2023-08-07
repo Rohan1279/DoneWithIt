@@ -6,29 +6,19 @@ import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 import { Button, Image } from "react-native";
 import ImageInput from "./app/components/ImageInput";
+import ImageInputList from "./app/components/ImageInputList";
 export default function App() {
-  const [image, setImage] = useState(null);
-  const requestPermission = async () => {
-    const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (!granted) alert("You need to enable permission to access library");
-  };
-  const selectImage = async () => {
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync();
-
-      if (!result.canceled) setImage(result.uri);
-    } catch (error) {
-      console.log("Error reading an image", error);
-    }
-  };
-  useEffect(() => {
-    requestPermission();
-  }, []);
+  const [images, setImages] = useState([]);
 
   return (
     <Screen>
-      {/* <Image source={{ uri: image }} style={{ width: 200, height: 200 }} /> */}
-      <ImageInput imageUri={image} onChangeImage={(uri) => setImage(uri)} />
+      <ImageInputList
+        imageUris={images}
+        onAddImage={(uri) => setImages([...images, uri])}
+        onRemoveImage={(uri) =>
+          setImages(images.filter((imageUri) => imageUri !== uri))
+        }
+      />
     </Screen>
   );
 }
