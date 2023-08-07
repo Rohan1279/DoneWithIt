@@ -10,15 +10,5 @@ import ImageInputList from "./app/components/ImageInputList";
 export default function App() {
   const [images, setImages] = useState([]);
 
-  return (
-    <Screen>
-      <ImageInputList
-        imageUris={images}
-        onAddImage={(uri) => setImages([...images, uri])}
-        onRemoveImage={(uri) =>
-          setImages(images.filter((imageUri) => imageUri !== uri))
-        }
-      />
-    </Screen>
-  );
+  return <ListingEditScreen />;
 }
